@@ -17,7 +17,7 @@ jobs:
       - name: Run CBOM Analysis (cbae tool)
         uses: Namokar100/cbae-action@v1.0.8
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN }}
           commands-to-install-build-tools: |
             python -m pip install --upgrade pip
             pip install sphinx pipenv  # adjust as needed
