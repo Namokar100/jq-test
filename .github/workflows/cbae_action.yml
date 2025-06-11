@@ -8,17 +8,18 @@ jobs:
   cbom-analysis:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Initialize Submodules
         run: git submodule update --init --recursive
 
-      - name: Run the cbae tool
-      - uses: actions/checkout@v3
-      - uses: Namokar100/cbae-action@v1.0.8
+      - name: Run CBOM Analysis (cbae tool)
+        uses: Namokar100/cbae-action@v1.0.8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commands-to-install-build-tools: |
             python -m pip install --upgrade pip
             pip install sphinx pipenv  # adjust as needed
-
           build-command: |
-            autoreconf -fi && ./configure && make
+            autoreconf -fi && ./configure && make 
